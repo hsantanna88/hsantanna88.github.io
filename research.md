@@ -7,7 +7,7 @@ permalink: /research/
 ## Publications
 
 "The Effects of the Venezuelan Refugee Crisis on the Brazilian Labor Market" (with [Samyam Shrestha](https://shsamyam.org)) <br />
-<span style="color:#1e6b52;">Upcoming, *Journal of Economic Geography*</span> [[details](/workingpapers/vzcrisis.md)]
+<span style="color:#1E4B6B;">Upcoming, *Journal of Economic Geography*</span> [[details](/workingpapers/vzcrisis.md)]
 
 ## Working Papers
 
@@ -15,7 +15,7 @@ permalink: /research/
 <span style="color:#1e6b52;">Revise and Resubmit, *Economic Letters*</span>
 
 "Gender Differences in Comparative Advantage Matches: Evidence from Linked Employer-Employee Data" <br />
-<span style="color:#4a90e2;">*Job Market Paper*</span> [[details](/workingpapers/assortmatch.md)]
+<span style="color:#1e6b52;">*Job Market Paper*</span> [[details](/workingpapers/assortmatch.md)]
 
 
 "Difference in Differences with Bad Controls" (with [Carolina Caetano](http://www.carolinacaetano.net), [Brantly Callaway](https://bcallaway11.github.io), and [Stroud Payne](https://as.vanderbilt.edu/economics/bio/stroud-payne/))<br />
