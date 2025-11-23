@@ -7,12 +7,12 @@ permalink: /research/
 ## Publications
 
 "The Effects of the Venezuelan Refugee Crisis on the Brazilian Labor Market" (with [Samyam Shrestha](https://shsamyam.org)) <br />
-<span style="color:#50b27c;">Upcoming, *Journal of Economic Geography*</span> [[details](/workingpapers/vzcrisis.md)]
+<span style="color:#1e6b52;">Upcoming, *Journal of Economic Geography*</span> [[details](/workingpapers/vzcrisis.md)]
 
 ## Working Papers
 
 "The End of Free Movement and International Migration"  (with [Samyam Shrestha](https://shsamyam.org)) <br /> 
-<span style="color:#50b27c;">Revise and Resubmit, *Economic Letters*</span>
+<span style="color:#1e6b52;">Revise and Resubmit, *Economic Letters*</span>
 
 "Gender Differences in Comparative Advantage Matches: Evidence from Linked Employer-Employee Data" <br />
 <span style="color:#4a90e2;">*Job Market Paper*</span> [[details](/workingpapers/assortmatch.md)]
