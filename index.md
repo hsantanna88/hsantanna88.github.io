@@ -10,9 +10,6 @@ author: Hugo Sant'Anna
 
 My research interests lie at the intersection of **Labor Economics** and **Applied Econometrics**, where I examine how large-scale disruptions reshape labor market structures, with a focus on immigration flows, environmental crises, and gender dynamics.
 
-I also study methodological challenges in settings where covariates may be influenced by treatment effects in Difference-in-Differences.
-
-[Download my CV](files/hsantannaCV.pdf)  
-[Email me](mailto:hsantanna@uga.edu)
+Currently, I am interested in difference-in-difference settings where time-varying covariates may be influenced by the treatment, but they are still crucial for the identification strategy.
 
 ---
