@@ -6,10 +6,28 @@ author_profile: true
 author: Hugo Sant'Anna
 ---
 
-I am an Assistant Professor of Economics at <br />the [University of Alabama at Birmingham's Collat School of Business](https://www.uab.edu/business/home/).🐲
+I am an Assistant Professor of Economics at the [University of Alabama at Birmingham's Collat School of Business](https://www.uab.edu/business/home/).
 
 My research interests lie at the intersection of **Labor Economics** and **Applied Econometrics**, where I examine how large-scale disruptions reshape labor market structures, with a focus on immigration flows, environmental crises, and gender dynamics.
 
 Currently, I am interested in difference-in-difference settings where time-varying covariates may be influenced by the treatment, but they are still crucial for the identification strategy.
+
+---
+
+<div class="clo-author-announcement" markdown="1">
+
+## The Clo-Author
+
+*Your Econ AI Research Assistant for Claude Code*
+{: .subtitle}
+
+An open-source workflow that turns [Claude Code](https://docs.anthropic.com/en/docs/claude-code) into a full-service applied econometrics research assistant — from literature review to journal submission. Built on [Pedro Sant'Anna's claude-code-my-workflow](https://github.com/psantanna/claude-code-my-workflow) template, reoriented for research publication.
+
+12 specialized agents. 27 slash commands. DiD, IV, RDD, Synthetic Control, Event Studies — all validated. AEA Data Editor compliance built in.
+
+[Learn more](/clo-author/){: .btn .btn--primary}
+[Fork on GitHub](https://github.com/hsantanna88/the-clo-author){: .btn .btn--inverse}
+
+</div>
 
 ---

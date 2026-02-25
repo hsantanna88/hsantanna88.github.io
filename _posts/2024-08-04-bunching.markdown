@@ -5,73 +5,76 @@ classes: wide
 use_math: true
 date:   2024-08-04 10:31:27 -0400
 categories: R
-excerpt: "This is a brief introduction of bunching analysis in data as a causal method. The data used here has been constructed, using a basic example based on <a href='https://onlinelibrary.wiley.com/doi/abs/10.3982/ECTA11231'>Caetano (2015)</a>"
+excerpt: "A brief introduction to bunching analysis as a causal method, based on <a href='https://onlinelibrary.wiley.com/doi/abs/10.3982/ECTA11231'>Caetano (2015)</a>."
 ---
 
-Here I will explain the basic concepts of bunching as a causal inference method. The data provided here is constructed in R for the sake of example. You can check the full code [here](https://github.com/hsantanna88/bunching_example)
+Here I will explain the basic concepts of bunching as a causal inference method. The full replication code is at the bottom of this post and also available on [GitHub](https://github.com/hsantanna88/bunching_example).
 
-### The Naive Approach
+```r
+library(tidyverse)
+library(ggdag)
+library(AER)
+
+set.seed(20240804)
+```
+
+## Constructing the data
+
+We need a data generating process where an unobserved confounder $\eta$ affects both the treatment (cigarettes) and the outcome (birth weight), while a covariate (education) is also observed.
+
+```r
+n <- 5000
+
+# Covariates
+educ <- sample(6:16, n, replace = TRUE)
+eta <- rnorm(n)
+
+# Latent smoking propensity (running variable)
+cigs_star <- 20 - 1.5 * educ + 5 * eta + rnorm(n, 0, 3)
+
+# Observed cigarettes: censored at zero
+cigs <- pmax(0, round(cigs_star))
+
+# Birth weight: affected by cigs, education, AND eta
+bw <- 3000 - 20 * cigs + 15 * educ - 10 * eta + rnorm(n, 0, 100)
+
+data <- tibble(bw = bw, cigs = cigs, educ = educ)
+```
+
+Notice the key feature: $\eta$ directly affects both `cigs_star` (smoking propensity) and `bw` (birth weight). This is the unobserved confounder that will bias naive estimates.
+
+## The naive approach
 
 Imagine that you are interested in the causal effect of smoking on birth weights. Say you observe a covariate, _mom's education_, and you are willing to control for that.
 
-Okay, that sounds good. Perhaps people with more education are more inclined to not smoke, better healthcare and etc. For simplicity, you could impose a linear model, which makes the expression:
+Okay, that sounds good. Perhaps people with more education are more inclined to not smoke, have better healthcare, etc. For simplicity, you could impose a linear model:
 
 $$y_i = \beta X_i + \gamma Z_i + \varepsilon_i$$
 
-Where $y_i$ is the birth weight of baby $i$, $X_i$ is your explanatory variable, number of cigarettes smoked by baby $i$'s mom, and $Z_i$ is the mom's education. $\varepsilon_i$ is a random shock following a normal distribution where $\mathbb{E}(\varepsilon \| X, Z) = 0$.
+Where $y_i$ is the birth weight of baby $i$, $X_i$ is the number of cigarettes smoked by baby $i$'s mom, and $Z_i$ is the mom's education. $\varepsilon_i$ is a random shock where $\mathbb{E}(\varepsilon \mid X, Z) = 0$.
 
-Say you have these variables in R in a pretty neat dataset, so you run the regression and, excited, promptly shows the results to your advisor:
+Say you have these variables in a neat dataset, so you run the regression:
 
 ```r
-r$> # naive regression
-    naive_model <- lm(bw ~ cigs + educ)
-    summary(naive_model)
-
-Call:
-lm(formula = bw ~ cigs + educ)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--535.15 -124.99  -11.07  122.14  530.21 
-
-Coefficients:
-             Estimate Std. Error t value Pr(>|t|)    
-(Intercept) 3024.5512    26.5450 113.941   <2e-16 ***
-cigs         -39.2510     0.8716 -45.035   <2e-16 ***
-educ          -0.7493     1.7104  -0.438    0.661    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 177.8 on 997 degrees of freedom
-Multiple R-squared:  0.6788,    Adjusted R-squared:  0.6781 
-F-statistic:  1053 on 2 and 997 DF,  p-value: < 2.2e-16
+naive_model <- lm(bw ~ cigs + educ, data = data)
+summary(naive_model)
 ```
 
-_bw_ is the birthweight, measured in grams. You have the average number of cigarettes smoked by the mom in _cigs_, and her education level in _educ_.
+Do you notice something _weird_ about this regression? Can you say that for every cigarette smoked per day, the baby loses about 40 grams?
 
-Do you notice something _weird_ about this regression? Can you say that for every cigarette smoked per day, the baby loses about 40 grams when they are born?
-
-### Probably Not!
+## Probably not!
 
 This is why it is important to always have economic intuition as your sanity check.
 
-The hint, and this is where your advisor would point out, lies on the educ coefficient. _-0.7?_ That seems off, right? It implies babies are worse off as we increase the mom's education level.
+The hint lies on the `educ` coefficient. It is either wrong-signed or insignificant — it implies babies are worse off (or no better off) as we increase the mom's education level.
 
 What is happening here then?
 
-The problem relies on what we do not observe in the data. What if there is a variable, unobserved $\eta$ in which influences not only directly birth weights, but also the propensity to smoke?
+The problem lies in what we do not observe. What if there is a variable, unobserved $\eta$, which influences not only birth weights directly but also the propensity to smoke?
 
-Let us make a pretty DAG representing this using the awesome package ggdag:
+Let us make a DAG representing this using `ggdag`:
 
 ```r
-
-
-# Making cool DAGs with ggdag
-library(tidyverse)
-library(ggdag)
-
-
-# Create the DAG
 dag <- dagify(
   bw ~ cigs + educ + eta,
   cigs ~ educ + eta,
@@ -85,166 +88,201 @@ dag <- dagify(
   outcome = "bw"
 )
 
-# Create a prettier plot
-X11()
-
 ggdag_dseparated(dag, "eta", text = FALSE, use_labels = "label") +
-  theme_dag_blank()+
+  theme_dag_blank() +
   theme(legend.position = "none")
-
 ```
-
-I use the dseparated function to highlight the confounder path. It looks like this:
 
 ![Causal Path](/assets/images/bunch_dag.png)
 
-Notice there are 3 causal path to birth weights. The first is a direct path from education, another direct path from this $\eta$ variable, and another one, where cigarettes act as a _mediator variable_.
+Notice there are 3 causal paths to birth weights. The first is a direct path from education, another from $\eta$, and another where cigarettes act as a _mediator variable_.
 
-If that is the case, not only we are assuming erroneously the causal relationship between cigs and birth weights, we are probably messing with the education causal path.
+If that is the case, not only are we incorrectly estimating the causal relationship between cigarettes and birth weights, we are probably messing with the education path too.
+
+## Enter bunching
 
 So how to solve this problem? This is where **bunching** comes into play.
 
-The key assumption here is that there is a proxy path between smoking cigarettes and covariates. Let us say that individuals have a propensity to smoke, like an utility function. Some individuals maximize this utility by smoking large quantities of cigarettes. Other individuals, however, are _very_ aversed to cigarettes. They find it very repulsive in such way that they would pay not to smoke, if that was the case. There are also the _marginally propensed_ to smoke. These moms would smoke given a chance, but they are slightly better off not smoking.
+The key assumption: there is a proxy relationship between smoking and covariates. Individuals have a propensity to smoke, like a utility function. Some maximize this utility by smoking heavily. Others are _very_ averse — they would pay not to smoke. And then there are the _marginally inclined_ — they would smoke given a chance but are slightly better off not smoking.
 
-The implication of this assumption is interesting because we _partially_ observe this mechanism. That is, we only observe individuals that are positively inclined to smoke! There is absolutely no way we can see individuals smoking negative numbers of cigarettes. However, what happens if we plot the relationship between cigarettes and birth weights?
+The implication is interesting because we _partially_ observe this mechanism. We only see individuals who are positively inclined to smoke! There is no way to observe negative cigarette consumption.
+
+What happens if we plot the relationship?
 
 ```r
-data <- data.frame(cigs = cigs, bw = round(bw, 0))
-
 ggplot(data, aes(x = cigs, y = bw)) +
-  geom_point(aes(color = cigs), alpha = 0.6, size = 3) +
-  geom_smooth(method = "lm", color = "red", fill = "pink", alpha = 0.2) +
-  scale_color_gradient(low = "lightblue", high = "darkblue") +
-  labs(title = "Cigarette Consumption versus Birth Weight",
-       x = "Number of Cigarettes Smoked per Day",
-       y = "Birth Weight (grams)",
-       color = "Cigarettes\nper Day") +
-  theme_minimal() +
+  geom_point(aes(color = cigs), alpha = 0.6, size = 2) +
+  geom_smooth(method = "lm", color = "#2a9d8f", fill = "#2a9d8f", alpha = 0.2) +
+  scale_color_gradient(low = "#7ecfc4", high = "#2d2d2d") +
+  labs(
+    title = "Cigarette Consumption vs. Birth Weight",
+    x = "Cigarettes Smoked per Day",
+    y = "Birth Weight (grams)",
+    color = "Cigarettes\nper Day"
+  ) +
+  theme_minimal(base_size = 14) +
   theme(
-    plot.title = element_text(face = "bold", size = 16, hjust = 0.5),
-    axis.title = element_text(face = "bold"),
-    legend.position = "right",
-    panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "white", color = NA),
-    plot.background = element_rect(fill = "white", color = NA)
+    plot.title = element_text(face = "bold", color = "#2d2d2d"),
+    panel.grid.minor = element_blank()
   )
 ```
 
-I am rounding the birth weight to be integer in grams (remember this is a simulated data!) I am beautifying the plot so we can have a nice time observing it:
-
 ![cigversusbw](/assets/images/cig_bw_plot.png)
 
-What is catching your eyes? Notice that this is a pretty linear relationship, until it is not: as soon as we reach 0 cigarettes, we observe a **bunching** pattern of birth weights.
+What catches your eye? Notice that this is a pretty linear relationship, until it is not: as soon as we reach 0 cigarettes, we observe a **bunching** pattern of birth weights.
 
-The right question here is "why are there so many data points accumulated at the zero cigarettes?" This is the puzzle we must solve.
+The right question is: why are there so many data points accumulated at zero? This is the puzzle we must solve.
 
-The answer is: there is a variable, that we do not observe, that "runs" in that relationship continuously and accepts negative values of cigarettes. This variable is affected by both observables (the education of the mom) and the unobservables ($\eta$). Therefore, if we could _capture_ this variable, we could isolate the relationship between cigarettes and birth weights without the confounding $\eta$ factor.
+## The running variable
 
-Going back to metrics language:
+The answer: there is a variable we do not observe that "runs" in that relationship continuously and accepts negative values of cigarettes. This variable is affected by both observables (education) and unobservables ($\eta$). If we could _capture_ this variable, we could isolate the relationship between cigarettes and birth weights without the confounding $\eta$ factor.
 
-$$X = max (0, X^*) $$
+Formally:
 
-That is, $X$, the observed variable representing average cigarettes per day is in fact a proxy for $X^*$, the _running variable_ that is continuous in zero and can assume negative values (of course you may say cigarettes is an integer and therefore, not necessarily continuous. Let us abstract from this for the sake of simplicity, since it does not impose loss of generality in understanding the concept).
+$$X = \max(0, X^*)$$
 
-Recovering $X^*$ can be quite complex. However, if we are to assume a normal relationship (that is, linear) in our model, things become easier:
+That is, $X$, the observed variable, is a proxy for $X^*$, the _running variable_ that is continuous in zero and can assume negative values.
 
-$$Y = \beta X + \gamma Z + \delta \eta + \varepsilon$$
+If we assume linearity:
+
+$$Y = \beta X + Z'\gamma + \delta \eta + \varepsilon$$
 
 $$X^* = Z'\pi + \eta$$
 
-That is, the running variable of cigarettes is a linear relationship between the observable variable mom education and the unobservable variable $\eta$. Smoking is also a linear relationship, however this time we acknoledge the unobservable confounder.
+The running variable of cigarettes is a linear function of the observable (education) and the unobservable ($\eta$). Our objective is to recover $X^*$ and use it as a proxy for $\eta$. If we can, we bypass the confounding.
 
-So our objective is to recover this $X^*$ and use it as a proxy for $\eta$. If we can do it, we bypass the confoundness generated by unobservables.
+Combining these equations:
 
-After that, we can exogenously capture the relationship between $Y$ and $X$. If you combine the last three equations and do some math (using matrix notation now), you reach:
+$$\mathbb{E}(Y \mid X,Z) = X\beta + Z'(\gamma - \pi\delta) + \delta\left(X + \mathbb{E}(X^* \mid X^* \leq 0, Z)\cdot\mathbb{1}(X = 0)\right)$$
 
-$$\mathbb{E}(Y\|X,Z) = X\beta + Z'(\gamma - \pi \delta) + \delta(X + \mathbb{E}(X^* \| X^* <= 0, Z)\mathbb{1}(X = 0))$$
+The trick is that we impute $\mathbb{E}(X^* \mid X^* \leq 0, Z)\cdot\mathbb{1}(X = 0)$ as a proxy for when X becomes 0 — we now "observe" negative values for smoking cigarettes. This accounts for the unobservable confounder.
 
-It seems complicated, but the trick is that we imput $\mathbb{E}(X^* \| X^* <= 0, Z)\mathbb{1}(X = 0)$ as a proxy for when X becomes 0, meaning we now "observe" negative values for smoking cigarettes.
+## The Tobit approach
 
-What is that actually doing? It is actually accounting for the unobservable which confounds our causal path.
-
-Since our data is censored at zero and we assume linearity, we can recover this component using a tobit model. This is straightforward in R:
+Since our data is censored at zero, we assume linearity and **normality of the latent error**: $\eta \sim \mathcal{N}(0, \sigma^2)$. This allows us to use a Tobit model to recover the truncated conditional expectation $\mathbb{E}(X^* \mid X^* \leq 0, Z)$:
 
 ```r
+# Fit Tobit model
+tobit_model <- tobit(cigs ~ educ, data = data, left = 0)
+
+# Extract Tobit parameters
+sigma_hat <- tobit_model$scale
+xb <- predict(tobit_model, type = "lp")  # linear predictor: Z'pi_hat
+
+# Compute E(X* | X* <= 0, Z) using the inverse Mills ratio
+# For truncation from above at 0: E(X*|X*<=0) = Z'pi - sigma * phi(-Z'pi/sigma) / Phi(-Z'pi/sigma)
+mills <- dnorm(-xb / sigma_hat) / pnorm(-xb / sigma_hat)
+trunc_exp <- xb - sigma_hat * mills
+
+# Control function: truncated expectation at the bunching point, zero for smokers
+data <- data |>
+  mutate(cf_imput = ifelse(cigs == 0, trunc_exp, 0))
+```
+
+The key step is the inverse Mills ratio correction. The linear predictor $Z'\hat{\pi}$ alone is _not_ $\mathbb{E}(X^* \mid X^* \leq 0, Z)$ — we must account for the truncation. For a normal distribution truncated from above at zero, this expectation is $Z'\hat{\pi} - \hat{\sigma} \cdot \frac{\phi(-Z'\hat{\pi}/\hat{\sigma})}{\Phi(-Z'\hat{\pi}/\hat{\sigma})}$, where $\phi$ and $\Phi$ are the standard normal PDF and CDF.
+
+Now fit the full model with the imputed control function:
+
+```r
+cf_model <- lm(bw ~ cigs + educ + cf_imput, data = data)
+summary(cf_model)
+```
+
+The coefficient on `cigs` should now be close to the true value of $\beta = -20$. Compare this with the naive OLS, which was biased toward $-40$. The control function method successfully removed the endogeneity from average smoked cigarettes per day.
+
+## Where is the randomness?
+
+Causal experiments usually rely on random shocks or exogenous "manipulation" to build identification. But here there is no randomness, right? Individuals bunched at zero simply because they _cannot_ smoke less than zero. Their propensity to smoke is _hardwired_ in their utility function.
+
+I think the correct way to think about this is to understand _why we require randomness_ in the first place. We need randomness to ensure unobservables are not affecting the treatment effect. In bunching, we exploit the bunched values to reach the unobservable confounder and ultimately control for it.
+
+## Further reading
+
+Bunching can definitely increase in complexity. We do not need to assume normality or a linear model. We do not even need parametrization! For a deeper overview, I suggest reading [Bertanha, McCallum, and Seegert (2024)](https://link.springer.com/referenceworkentry/10.1007/978-3-319-57365-6_382-1) and the original [Caetano (2015)](https://onlinelibrary.wiley.com/doi/abs/10.3982/ECTA11231).
+
+---
+
+## Full Replication Script
+
+<details>
+<summary>Click to expand the complete self-contained R script</summary>
+
+```r
+# =============================================================
+# Bunching as Causal Inference: Complete Replication Script
+# Hugo Sant'Anna | hsantanna.org
+# Based on Caetano (2015, Econometrica)
+# =============================================================
+
+library(tidyverse)
+library(ggdag)
 library(AER)
 
-# Fit Tobit model
-tobit_model <- tobit(cigs ~ educ, left = 0)
-summary(tobit_model)
+set.seed(20240804)
+n <- 5000
 
-cigs_imput <- ifelse(cigs == 0, predict(tobit_model), cigs)
+# --- Data generating process ---
+educ <- sample(6:16, n, replace = TRUE)
+eta <- rnorm(n)
+cigs_star <- 20 - 1.5 * educ + 5 * eta + rnorm(n, 0, 3)
+cigs <- pmax(0, round(cigs_star))
+bw <- 3000 - 20 * cigs + 15 * educ - 10 * eta + rnorm(n, 0, 100)
+
+data <- tibble(bw = bw, cigs = cigs, educ = educ)
+
+# --- 1. Naive OLS (biased) ---
+naive_model <- lm(bw ~ cigs + educ, data = data)
+cat("Naive beta_cigs:", round(coef(naive_model)["cigs"], 3), "\n")
+
+# --- 2. DAG ---
+dag <- dagify(
+  bw ~ cigs + educ + eta,
+  cigs ~ educ + eta,
+  labels = c(
+    "bw" = "Birth Weight", "cigs" = "Cigarettes",
+    "educ" = "Education", "eta" = "Unobserved\nFactors"
+  ),
+  exposure = "cigs", outcome = "bw"
+)
+
+p_dag <- ggdag_dseparated(dag, "eta", text = FALSE, use_labels = "label") +
+  theme_dag_blank() +
+  theme(legend.position = "none")
+
+# --- 3. Scatter plot ---
+p_scatter <- ggplot(data, aes(x = cigs, y = bw)) +
+  geom_point(aes(color = cigs), alpha = 0.6, size = 2) +
+  geom_smooth(method = "lm", color = "#2a9d8f", fill = "#2a9d8f", alpha = 0.2) +
+  scale_color_gradient(low = "#7ecfc4", high = "#2d2d2d") +
+  labs(
+    title = "Cigarette Consumption vs. Birth Weight",
+    x = "Cigarettes Smoked per Day",
+    y = "Birth Weight (grams)",
+    color = "Cigarettes\nper Day"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", color = "#2d2d2d"),
+    panel.grid.minor = element_blank()
+  )
+
+# --- 4. Tobit + control function ---
+tobit_model <- tobit(cigs ~ educ, data = data, left = 0)
+sigma_hat <- tobit_model$scale
+xb <- predict(tobit_model, type = "lp")
+mills <- dnorm(-xb / sigma_hat) / pnorm(-xb / sigma_hat)
+trunc_exp <- xb - sigma_hat * mills
+
+data <- data |>
+  mutate(cf_imput = ifelse(cigs == 0, trunc_exp, 0))
+
+cf_model <- lm(bw ~ cigs + educ + cf_imput, data = data)
+cat("CF beta_cigs:", round(coef(cf_model)["cigs"], 3), "\n")
+cat("True beta_cigs: -20\n")
+
+# --- Save figures ---
+ggsave("assets/images/bunch_dag.png", p_dag, width = 7, height = 5, dpi = 200)
+ggsave("assets/images/cig_bw_plot.png", p_scatter, width = 8, height = 6, dpi = 200)
 ```
 
-```r
-r$> # Fit Tobit model
-    tobit_model <- tobit(cigs ~ educ, left = 0)
-    summary(tobit_model)
-
-Call:
-tobit(formula = cigs ~ educ, left = 0)
-
-Observations:
-         Total  Left-censored     Uncensored Right-censored
-          1000            823            177              0
-
-Coefficients:
-            Estimate Std. Error z value Pr(>|z|)
-(Intercept) 11.26792    4.17462   2.699  0.00695 **
-educ        -2.20861    0.31065  -7.110 1.16e-12 ***
-Log(scale)   3.08961    0.06276  49.233  < 2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-```
-
-The fitted tobit model tell us that increasing education by one level decreases cigarette consumption by around 2.2. This is good enough since the model I constructed assumes this relationship to be 2. The noise comes from the fact that 80 percent of the data do not smoke. Still, it is a good approximation given the standard error.
-
-Notice that I also made the cigs_imput variable. The remaining task is to fit the full linear model:
-
-```r
-# Fit linear model
-lm_model <- lm(bw ~ cigs + cigs_imput + educ)
-```
-
-```r
-r$> summary(lm_model)
-
-Call:
-lm(formula = bw ~ cigs + educ + cigs_imput)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--470.22 -118.78   -3.42  111.13  505.48 
-
-Coefficients:
-             Estimate Std. Error t value Pr(>|t|)
-(Intercept) 3124.4780    26.1223  119.61   <2e-16 ***
-cigs         -20.5694     1.7417  -11.81   <2e-16 ***
-educ         -22.0509     2.3737   -9.29   <2e-16 ***
-cigs_imput   -10.8197     0.8918  -12.13   <2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 166.1 on 996 degrees of freedom
-Multiple R-squared:  0.7201,    Adjusted R-squared:  0.7193
-F-statistic: 854.2 on 3 and 996 DF,  p-value: < 2.2e-16
-```
-
-The original $\beta$ value for the constructed data is $-20$. That is fantastically close! And almost _half_ in magnitude of the predicted naive OLS. Meaning the imputation method successfully managed to remove endogeneity from average smoked cigarettes per day.
-
-### That is cool but... where is _randomness_?
-
-Causal experiments usually rely on random shocks or exogenous "manipulation" that is as good as random to build their identification strategy. But in this case, there is no randomness, right? Individuals bunched at zero simply because they _can't_ smoke less than zero. Their propensity to smoke is _hardwired_ in their utility function.
-
-I think the correct way to ponder over this question is to understand _why we require randomness_ in the first place. We need randomness in causal experiments to make sure unobservables are not affecting the treatment effect. In bunching, we exploit the bunched values to reach the unobservable confounder and ultimately control for that.
-
-### Some final notes
-
-Bunching can definitely increase in complexity. As you are probably guessing by now, we don't need to assume normality or a linear model. We don't even need to impose parametrization! For a deeper overview of the method, I suggest reading [Bertanha, et al. (2024)](https://link.springer.com/referenceworkentry/10.1007/978-3-319-57365-6_382-1)
-
-
-
-
-
-
-
+</details>

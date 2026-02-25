@@ -1,0 +1,427 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+// Neutral Academic palette: charcoal + teal
+$primary-color: #2d2d2d;
+$link-color: #2a9d8f;
+$link-color-hover: darken(#2a9d8f, 12%);
+$text-color: #2d2d2d;
+$background-color: #fafafa;
+$masthead-link-color: #2d2d2d;
+$masthead-link-color-hover: #2a9d8f;
+$footer-background-color: #2d2d2d;
+$navicon-link-color-hover: #2a9d8f;
+
+@import "minimal-mistakes/skins/air";
+@import "minimal-mistakes";
+
+// ============================================================
+// CUSTOM OVERRIDES: Neutral Academic
+// ============================================================
+
+// --- Typography ---
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  color: $text-color;
+}
+
+h1, h2, h3, h4, h5, h6,
+.page__title,
+.archive__item-title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  color: #2d2d2d;
+}
+
+// --- Code blocks: JetBrains Mono + dark theme ---
+code,
+pre,
+.highlight {
+  font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", monospace;
+  font-size: 0.82em;
+}
+
+div.highlighter-rouge,
+figure.highlight {
+  background: #1e1e2e;
+  border-radius: 8px;
+  border: 1px solid #383850;
+  margin: 1.5em 0;
+}
+
+.highlight pre {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding: 1.2em;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+// Inline code
+p code,
+li code,
+td code {
+  background: #f0f4f3;
+  color: #1a7a6d;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  border: 1px solid #dce8e6;
+}
+
+// --- Masthead / navigation ---
+.masthead {
+  border-bottom: 2px solid #2a9d8f;
+  background: #fafafa;
+}
+
+.greedy-nav a {
+  color: #2d2d2d;
+  font-weight: 600;
+
+  &:hover {
+    color: #2a9d8f;
+  }
+}
+
+.greedy-nav .visible-links a:before {
+  background: #2a9d8f;
+}
+
+// --- Page content width for wide class ---
+.page__content.wide {
+  max-width: 1000px;
+}
+
+// --- Links ---
+a {
+  color: #2a9d8f;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: darken(#2a9d8f, 12%);
+    border-bottom-color: darken(#2a9d8f, 12%);
+  }
+}
+
+// --- Buttons ---
+.btn--primary {
+  background-color: #2d2d2d;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 600;
+
+  &:hover {
+    background-color: #2a9d8f;
+    color: #fff;
+  }
+}
+
+.btn--inverse {
+  background-color: #fff;
+  color: #2d2d2d;
+  border: 2px solid #2d2d2d;
+  border-radius: 6px;
+  font-weight: 600;
+
+  &:hover {
+    background-color: #2d2d2d;
+    color: #fff;
+  }
+}
+
+// --- Sidebar author profile ---
+.author__avatar {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+
+  // Kill the default whitish overlay
+  &:hover img {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  }
+
+  img {
+    max-width: 200px;
+    border-radius: 10px;
+    border: 3px solid #2a9d8f;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    filter: none !important;
+    opacity: 1 !important;
+    transition: box-shadow 0.2s ease;
+  }
+}
+
+.author__name {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 1.15em;
+  color: #2d2d2d;
+  margin-top: 0.6em;
+}
+
+.author__bio {
+  font-style: normal;
+  color: #555;
+  font-size: 0.88em;
+  line-height: 1.5;
+}
+
+.author__urls-wrapper {
+  a {
+    color: #2d2d2d;
+    font-size: 0.9em;
+
+    &:hover {
+      color: #2a9d8f;
+    }
+  }
+
+  .author__urls {
+    li {
+      padding: 0.15em 0;
+    }
+  }
+}
+
+// --- Footer ---
+.page__footer {
+  background: #2d2d2d;
+  color: rgba(255, 255, 255, 0.7);
+
+  a {
+    color: #2a9d8f;
+
+    &:hover {
+      color: lighten(#2a9d8f, 15%);
+    }
+  }
+}
+
+.page__footer-follow .social-icons .svg-inline--fa {
+  color: #2a9d8f;
+}
+
+// --- Tables ---
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.9em;
+
+  th {
+    background: #2d2d2d;
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  td {
+    padding: 8px 14px;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  tr:nth-child(even) {
+    background: #f5f8f7;
+  }
+}
+
+// --- Blockquotes (academic style) ---
+blockquote {
+  border-left: 4px solid #2a9d8f;
+  background: #f5faf9;
+  padding: 1em 1.5em;
+  margin: 1.5em 0;
+  font-style: italic;
+  color: #444;
+}
+
+// --- Clo-Author announcement box ---
+.clo-author-announcement {
+  background: linear-gradient(135deg, #2d2d2d 0%, #1a3a36 100%);
+  color: white;
+  padding: 2em 2.5em;
+  border-radius: 12px;
+  margin: 2em 0;
+
+  h2 {
+    color: #5ccfbf;
+    margin-top: 0;
+    font-size: 1.6em;
+  }
+
+  .subtitle {
+    font-size: 1.1em;
+    opacity: 0.9;
+    font-style: italic;
+    margin-bottom: 1em;
+  }
+
+  p {
+    opacity: 0.95;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .btn--primary {
+    background: #2a9d8f;
+    color: #fff;
+
+    &:hover {
+      background: lighten(#2a9d8f, 10%);
+    }
+  }
+
+  .btn--inverse {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.5);
+    color: white;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: white;
+    }
+  }
+}
+
+// --- Skill cards grid (for Clo-Author page) ---
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5em;
+  margin: 1.5em 0;
+
+  // 2-column layout for main skills
+  &.skill-grid--2col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  // Centered single utility card
+  &.skill-grid--utility {
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+  }
+}
+
+.skill-card {
+  background: #f5f8f7;
+  padding: 1.5em;
+  border-radius: 8px;
+  border-left: 4px solid #2a9d8f;
+
+  h4 {
+    color: #2d2d2d;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.8em;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    font-size: 0.88em;
+    margin-bottom: 0.4em;
+    padding-left: 0;
+  }
+}
+
+// --- Agent lens table (for Clo-Author page) ---
+.agent-table {
+  th {
+    background: #1a3a36;
+  }
+
+  td:first-child {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+}
+
+// --- Badge ---
+.badge {
+  display: inline-block;
+  background: #2a9d8f;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.7em;
+  font-weight: 700;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+// --- Left sidebar navigation (Clo-Author page) ---
+.nav__list {
+  .nav__items {
+    font-size: 0.9em;
+
+    .nav__sub-title {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-weight: 700;
+      font-size: 0.85em;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #2d2d2d;
+      border-bottom: 2px solid #2a9d8f;
+      padding-bottom: 0.3em;
+      margin-top: 1.2em;
+      margin-bottom: 0.4em;
+    }
+
+    a {
+      color: #555;
+      font-size: 0.88em;
+      padding: 0.2em 0;
+      border-bottom: none;
+
+      &:hover {
+        color: #2a9d8f;
+      }
+    }
+  }
+}
+
+// --- Academic links (papers, packages) — subtle blue ---
+.page__content a[href*="doi.org"],
+.page__content a[href*="cran.r-project.org"],
+.page__content a[href*="rdpackages.github.io"] {
+  color: #3478c6;
+  border-bottom: 1px dotted #3478c6;
+
+  &:hover {
+    color: darken(#3478c6, 15%);
+    border-bottom-style: solid;
+  }
+}
+
+// --- Post meta ---
+.page__meta {
+  color: #888;
+  font-size: 0.8em;
+}
+
+// --- Responsive tweaks ---
+@media (max-width: 768px) {
+  .skill-grid {
+    grid-template-columns: 1fr;
+
+    &.skill-grid--2col {
+      grid-template-columns: 1fr;
+    }
+
+    &.skill-grid--utility {
+      max-width: 100%;
+    }
+  }
+}

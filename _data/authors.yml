@@ -1,19 +1,16 @@
 Hugo Sant'Anna:
-  name        : "Hugo Sant'Anna Rodrigues"
+  name        : "Hugo Sant'Anna"
   bio         : |
-    Ph.D. Candidate in Economics<br>
-    University of Georgia
+    Assistant Professor of Economics<br>
+    University of Alabama at Birmingham
   avatar      : "assets/images/hugo_profile.jpg"
   links:
-    - label: "UGA Email"
-      icon: "fas fa-solid fa-dog"
-      url: "mailto:hsantanna@uga.edu"
     - label: "UAB Email"
       icon: "fas fa-solid fa-dragon"
       url: "mailto:hsantanna@uab.edu"
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      url: "https://hsantanna88.github.io/"
+      url: "https://hsantanna.org/"
     - label: "Github"
       icon: "fab fa-github"
       url: "https://github.com/hsantanna88"
@@ -23,9 +20,3 @@ Hugo Sant'Anna:
     - label: "Twitter"
       icon: "fab fa-twitter"
       url: "http://www.twitter.com/hsantanna"
-    - label: "Department of Economics @ UGA"
-      icon: "fas fa-university"
-      url: "https://www.terry.uga.edu/departments/economics/"
-    - label: UGA Econometrics Reading Group
-      icon: "fa fa-bookmark"
-      url: "https://uga-metrics.github.io/"

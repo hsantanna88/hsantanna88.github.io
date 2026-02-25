@@ -1,8 +1,6 @@
 main:
   - title: "Home"
     url: /
-  - title: "About"
-    url: /about/
   - title: "CV"
     url: "/files/hsantannaCV.pdf"
     target: "_blank"
@@ -10,5 +8,37 @@ main:
     url: /research/
   - title: "Teaching"
     url: /teaching/
+  - title: "The Clo-Author"
+    url: /clo-author/
   - title: "Posts"
     url: /posts/
+
+clo-author:
+  - title: "Getting Started"
+    children:
+      - title: "Quick Start"
+        url: /clo-author/#quick-start
+      - title: "How It Works"
+        url: /clo-author/#how-it-works
+  - title: "Architecture"
+    children:
+      - title: "Production Pipeline"
+        url: /clo-author/#the-production-pipeline
+      - title: "The Agents"
+        url: /clo-author/#the-agents
+      - title: "Skills Reference"
+        url: /clo-author/#skills-reference
+  - title: "Project Setup"
+    children:
+      - title: "Directory Structure"
+        url: /clo-author/#directory-structure
+      - title: "Customization Guide"
+        url: /clo-author/#customization-guide
+  - title: "More"
+    children:
+      - title: "Design Philosophy"
+        url: /clo-author/#design-philosophy
+      - title: "FAQ"
+        url: /clo-author/#faq
+      - title: "Origin & Credits"
+        url: /clo-author/#origin--credits

@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 920" width="800" height="920" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2d2d2d"/>
+    </marker>
+    <marker id="arrowhead-gold" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2a9d8f"/>
+    </marker>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="920" fill="#f5f8f7" rx="8"/>
+
+  <!-- Title -->
+  <text x="400" y="36" text-anchor="middle" font-size="20" font-weight="bold" fill="#2d2d2d" letter-spacing="0.5">Clo-Author Production Pipeline</text>
+
+  <!-- 1. USER REQUEST -->
+  <rect x="300" y="52" width="200" height="42" rx="21" fill="#1a3a36" filter="url(#shadow)"/>
+  <text x="400" y="78" text-anchor="middle" font-size="14" font-weight="bold" fill="white">User Request</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="400" y1="94" x2="400" y2="118" stroke="#2d2d2d" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- 2. PLAN MODE -->
+  <rect x="275" y="120" width="250" height="46" rx="10" fill="#2d2d2d" filter="url(#shadow)"/>
+  <text x="400" y="141" text-anchor="middle" font-size="13" font-weight="bold" fill="white">Plan Mode</text>
+  <text x="400" y="157" text-anchor="middle" font-size="10" fill="#2a9d8f">saves to quality_reports/plans/</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="400" y1="166" x2="400" y2="190" stroke="#2d2d2d" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Orchestrator Loop bracket -->
+  <rect x="50" y="190" width="700" height="590" rx="12" fill="none" stroke="#2a9d8f" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="400" y="210" text-anchor="middle" font-size="13" font-weight="bold" fill="#2a9d8f" letter-spacing="1">ORCHESTRATOR LOOP</text>
+
+  <!-- 3a. IMPLEMENT -->
+  <rect x="290" y="222" width="220" height="42" rx="10" fill="#2d2d2d" filter="url(#shadow)"/>
+  <text x="400" y="240" text-anchor="middle" font-size="13" font-weight="bold" fill="white">IMPLEMENT</text>
+  <text x="400" y="255" text-anchor="middle" font-size="10" fill="#aab">Execute plan steps</text>
+
+  <!-- Arrow IMPLEMENT → VERIFY -->
+  <line x1="400" y1="264" x2="400" y2="288" stroke="#2d2d2d" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- 3b. VERIFY -->
+  <rect x="290" y="290" width="220" height="42" rx="10" fill="#2d2d2d" filter="url(#shadow)"/>
+  <text x="400" y="308" text-anchor="middle" font-size="13" font-weight="bold" fill="white">VERIFY</text>
+  <text x="400" y="323" text-anchor="middle" font-size="10" fill="#aab">Compile, render, check outputs</text>
+
+  <!-- Arrow VERIFY → REVIEW -->
+  <line x1="400" y1="332" x2="400" y2="358" stroke="#2d2d2d" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- 3c. REVIEW — fan-out to agents -->
+  <rect x="250" y="360" width="300" height="38" rx="10" fill="#1a3a36" filter="url(#shadow)"/>
+  <text x="400" y="383" text-anchor="middle" font-size="13" font-weight="bold" fill="white">REVIEW  (Parallel Agents)</text>
+
+  <!-- Fan-out lines from REVIEW box -->
+  <line x1="300" y1="398" x2="128" y2="420" stroke="#1a3a36" stroke-width="1.5"/>
+  <line x1="340" y1="398" x2="272" y2="420" stroke="#1a3a36" stroke-width="1.5"/>
+  <line x1="380" y1="398" x2="400" y2="420" stroke="#1a3a36" stroke-width="1.5"/>
+  <line x1="420" y1="398" x2="528" y2="420" stroke="#1a3a36" stroke-width="1.5"/>
+  <line x1="480" y1="398" x2="656" y2="420" stroke="#1a3a36" stroke-width="1.5"/>
+
+  <!-- Agent boxes — 5 agents matching the agents diagram -->
+  <rect x="70" y="422" width="116" height="34" rx="6" fill="#f5f8f7" stroke="#1a3a36" stroke-width="1.5"/>
+  <text x="128" y="443" text-anchor="middle" font-size="9" fill="#1a3a36" font-weight="600">Econometrician</text>
+
+  <rect x="204" y="422" width="116" height="34" rx="6" fill="#f5f8f7" stroke="#1a3a36" stroke-width="1.5"/>
+  <text x="262" y="443" text-anchor="middle" font-size="9" fill="#1a3a36" font-weight="600">Proofreader</text>
+
+  <rect x="338" y="422" width="116" height="34" rx="6" fill="#f5f8f7" stroke="#1a3a36" stroke-width="1.5"/>
+  <text x="396" y="443" text-anchor="middle" font-size="9" fill="#1a3a36" font-weight="600">R-Reviewer</text>
+
+  <rect x="472" y="422" width="116" height="34" rx="6" fill="#f5f8f7" stroke="#1a3a36" stroke-width="1.5"/>
+  <text x="530" y="443" text-anchor="middle" font-size="9" fill="#1a3a36" font-weight="600">Domain Reviewer</text>
+
+  <rect x="606" y="422" width="116" height="34" rx="6" fill="#f5f8f7" stroke="#1a3a36" stroke-width="1.5"/>
+  <text x="664" y="443" text-anchor="middle" font-size="9" fill="#1a3a36" font-weight="600">Repl. Auditor</text>
+
+  <!-- Converge lines from agents to FIX -->
+  <line x1="128" y1="456" x2="340" y2="490" stroke="#1a3a36" stroke-width="1.5"/>
+  <line x1="262" y1="456" x2="360" y2="490" stroke="#1a3a36" stroke-width="1.5"/>
+  <line x1="396" y1="456" x2="400" y2="490" stroke="#1a3a36" stroke-width="1.5"/>
+  <line x1="530" y1="456" x2="430" y2="490" stroke="#1a3a36" stroke-width="1.5"/>
+  <line x1="664" y1="456" x2="460" y2="490" stroke="#1a3a36" stroke-width="1.5"/>
+
+  <!-- 3d. FIX -->
+  <rect x="290" y="492" width="220" height="42" rx="10" fill="#2d2d2d" filter="url(#shadow)"/>
+  <text x="400" y="510" text-anchor="middle" font-size="13" font-weight="bold" fill="white">FIX</text>
+  <text x="400" y="525" text-anchor="middle" font-size="10" fill="#aab">Critical → Major → Minor</text>
+
+  <!-- Arrow FIX → RE-VERIFY -->
+  <line x1="400" y1="534" x2="400" y2="558" stroke="#2d2d2d" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- 3e. RE-VERIFY -->
+  <rect x="290" y="560" width="220" height="42" rx="10" fill="#2d2d2d" filter="url(#shadow)"/>
+  <text x="400" y="578" text-anchor="middle" font-size="13" font-weight="bold" fill="white">RE-VERIFY</text>
+  <text x="400" y="593" text-anchor="middle" font-size="10" fill="#aab">Compile + Verifier agent</text>
+
+  <!-- Arrow RE-VERIFY → SCORE -->
+  <line x1="400" y1="602" x2="400" y2="626" stroke="#2d2d2d" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- 3f. SCORE -->
+  <rect x="290" y="628" width="220" height="42" rx="10" fill="#2a9d8f" filter="url(#shadow)"/>
+  <text x="400" y="646" text-anchor="middle" font-size="13" font-weight="bold" fill="#2d2d2d">SCORE</text>
+  <text x="400" y="661" text-anchor="middle" font-size="10" fill="#2d2d2d">Quality gates (80 / 90 / 95)</text>
+
+  <!-- Arrow SCORE → Decision -->
+  <line x1="400" y1="670" x2="400" y2="690" stroke="#2d2d2d" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- 4. DECISION DIAMOND -->
+  <polygon points="400,692 470,726 400,760 330,726" fill="#1a3a36" stroke="#2d2d2d" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="400" y="722" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Score ≥</text>
+  <text x="400" y="736" text-anchor="middle" font-size="10" font-weight="bold" fill="white">threshold?</text>
+
+  <!-- YES arrow (down) -->
+  <line x1="400" y1="760" x2="400" y2="806" stroke="#2d2d2d" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <rect x="408" y="764" width="36" height="18" rx="4" fill="#2d7d46"/>
+  <text x="426" y="777" text-anchor="middle" font-size="10" font-weight="bold" fill="white">YES</text>
+
+  <!-- Present to User -->
+  <rect x="300" y="808" width="200" height="42" rx="21" fill="#1a3a36" filter="url(#shadow)"/>
+  <text x="400" y="834" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Present to User</text>
+
+  <!-- NO arrow (loop back to REVIEW) -->
+  <line x1="330" y1="726" x2="72" y2="726" stroke="#2a9d8f" stroke-width="2"/>
+  <line x1="72" y1="726" x2="72" y2="379" stroke="#2a9d8f" stroke-width="2"/>
+  <line x1="72" y1="379" x2="248" y2="379" stroke="#2a9d8f" stroke-width="2" marker-end="url(#arrowhead-gold)"/>
+  <rect x="76" y="712" width="30" height="18" rx="4" fill="#a33"/>
+  <text x="91" y="725" text-anchor="middle" font-size="10" font-weight="bold" fill="white">NO</text>
+
+  <!-- Max rounds label on loop-back -->
+  <text x="68" y="560" text-anchor="middle" font-size="9" fill="#2a9d8f" transform="rotate(-90, 68, 560)">max 5 rounds</text>
+
+  <!-- Threshold legend -->
+  <text x="400" y="870" text-anchor="middle" font-size="10" fill="#666">80 = commit gate  •  90 = submit gate  •  95 = excellence</text>
+
+  <!-- Footer note -->
+  <text x="400" y="908" text-anchor="middle" font-size="10" fill="#999">Clo-Author  |  Autonomous Academic Production System</text>
+</svg>

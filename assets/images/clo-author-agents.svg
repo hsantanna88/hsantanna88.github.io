@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 680" width="940" height="680" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow-solid" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2d2d2d"/>
+    </marker>
+    <marker id="arrow-dashed" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#888"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2a9d8f"/>
+    </marker>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="940" height="680" fill="#f5f8f7" rx="8"/>
+
+  <!-- Title -->
+  <text x="470" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d2d2d">Clo-Author Agent Architecture</text>
+
+  <!-- ============================================================ -->
+  <!-- CENTER: Paper/main.tex -->
+  <!-- ============================================================ -->
+  <rect x="370" y="52" width="200" height="56" rx="12" fill="#2d2d2d" filter="url(#shadow)"/>
+  <text x="470" y="76" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">Paper/main.tex</text>
+  <text x="470" y="94" text-anchor="middle" font-size="10" fill="#2a9d8f">Source of Truth</text>
+
+  <!-- ============================================================ -->
+  <!-- Orchestrator banner -->
+  <!-- ============================================================ -->
+  <rect x="50" y="128" width="840" height="28" rx="6" fill="#1a3a36" opacity="0.9"/>
+  <text x="470" y="147" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">/paper-excellence orchestrates parallel review  |  All agents run simultaneously</text>
+
+  <!-- Fan-out arrows from Paper to each agent -->
+  <line x1="470" y1="108" x2="470" y2="126" stroke="#2d2d2d" stroke-width="1.5"/>
+  <!-- From banner down to agents -->
+  <line x1="110" y1="156" x2="110" y2="180" stroke="#2d2d2d" stroke-width="1.5" marker-end="url(#arrow-solid)"/>
+  <line x1="290" y1="156" x2="290" y2="180" stroke="#2d2d2d" stroke-width="1.5" marker-end="url(#arrow-solid)"/>
+  <line x1="470" y1="156" x2="470" y2="180" stroke="#2d2d2d" stroke-width="1.5" marker-end="url(#arrow-solid)"/>
+  <line x1="650" y1="156" x2="650" y2="180" stroke="#2d2d2d" stroke-width="1.5" marker-end="url(#arrow-solid)"/>
+  <line x1="830" y1="156" x2="830" y2="180" stroke="#2d2d2d" stroke-width="1.5" marker-end="url(#arrow-solid)"/>
+
+  <!-- ============================================================ -->
+  <!-- PAPER QUALITY PATH — All 5 agents in ONE row (parallel) -->
+  <!-- ============================================================ -->
+  <text x="470" y="196" text-anchor="middle" font-size="11" font-weight="bold" fill="#2d2d2d" letter-spacing="0.5">PAPER QUALITY PATH (Blocking)</text>
+
+  <!-- Econometrician — wider to show prominence -->
+  <rect x="30" y="210" width="160" height="100" rx="10" fill="#2d2d2d" filter="url(#shadow)"/>
+  <text x="110" y="232" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">Econometrician</text>
+  <text x="110" y="248" text-anchor="middle" font-size="8" fill="#aaa">Reviews: .tex  .R</text>
+  <!-- 6 lens pills (compact, 2 rows of 3) -->
+  <rect x="38" y="256" width="62" height="14" rx="3" fill="#1a3a36"/>
+  <text x="69" y="266" text-anchor="middle" font-size="7" fill="#2a9d8f">Identification</text>
+  <rect x="104" y="256" width="58" height="14" rx="3" fill="#1a3a36"/>
+  <text x="133" y="266" text-anchor="middle" font-size="7" fill="#2a9d8f">Assumptions</text>
+  <rect x="166" y="256" width="18" height="14" rx="3" fill="#1a3a36"/>
+  <text x="175" y="266" text-anchor="middle" font-size="7" fill="#2a9d8f">SE</text>
+  <rect x="38" y="274" width="58" height="14" rx="3" fill="#1a3a36"/>
+  <text x="67" y="284" text-anchor="middle" font-size="7" fill="#2a9d8f">Robustness</text>
+  <rect x="100" y="274" width="46" height="14" rx="3" fill="#1a3a36"/>
+  <text x="123" y="284" text-anchor="middle" font-size="7" fill="#2a9d8f">Code↔Theory</text>
+  <rect x="150" y="274" width="34" height="14" rx="3" fill="#1a3a36"/>
+  <text x="167" y="284" text-anchor="middle" font-size="7" fill="#2a9d8f">Citations</text>
+
+  <!-- Proofreader -->
+  <rect x="210" y="210" width="160" height="100" rx="10" fill="#2d2d2d" filter="url(#shadow)"/>
+  <text x="290" y="236" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">Proofreader</text>
+  <text x="290" y="254" text-anchor="middle" font-size="9" fill="#aaa">Grammar, Typos,</text>
+  <text x="290" y="268" text-anchor="middle" font-size="9" fill="#aaa">Academic Writing</text>
+  <text x="290" y="296" text-anchor="middle" font-size="8" fill="#2a9d8f">Reviews: .tex</text>
+
+  <!-- R-Reviewer -->
+  <rect x="390" y="210" width="160" height="100" rx="10" fill="#2d2d2d" filter="url(#shadow)"/>
+  <text x="470" y="236" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">R-Reviewer</text>
+  <text x="470" y="254" text-anchor="middle" font-size="9" fill="#aaa">Code Quality,</text>
+  <text x="470" y="268" text-anchor="middle" font-size="9" fill="#aaa">Reproducibility</text>
+  <text x="470" y="296" text-anchor="middle" font-size="8" fill="#2a9d8f">Reviews: .R</text>
+
+  <!-- Domain Reviewer -->
+  <rect x="570" y="210" width="160" height="100" rx="10" fill="#2d2d2d" filter="url(#shadow)"/>
+  <text x="650" y="236" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">Domain Reviewer</text>
+  <text x="650" y="254" text-anchor="middle" font-size="9" fill="#aaa">Field-Specific</text>
+  <text x="650" y="268" text-anchor="middle" font-size="9" fill="#aaa">Substance</text>
+  <text x="650" y="296" text-anchor="middle" font-size="8" fill="#2a9d8f">Reviews: .tex</text>
+
+  <!-- Replication Auditor -->
+  <rect x="750" y="210" width="160" height="100" rx="10" fill="#2d2d2d" filter="url(#shadow)"/>
+  <text x="830" y="232" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">Replication</text>
+  <text x="830" y="248" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">Auditor</text>
+  <text x="830" y="268" text-anchor="middle" font-size="8" fill="#aaa">6 AEA Checks</text>
+  <text x="830" y="296" text-anchor="middle" font-size="8" fill="#2a9d8f">Reviews: Replication/</text>
+
+  <!-- ============================================================ -->
+  <!-- PARALLEL bracket to emphasize simultaneity -->
+  <!-- ============================================================ -->
+  <line x1="30" y1="320" x2="910" y2="320" stroke="#2a9d8f" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- ============================================================ -->
+  <!-- Converge arrows to Verifier -->
+  <!-- ============================================================ -->
+  <line x1="110" y1="310" x2="370" y2="360" stroke="#2d2d2d" stroke-width="1.2" marker-end="url(#arrow-solid)"/>
+  <line x1="290" y1="310" x2="410" y2="360" stroke="#2d2d2d" stroke-width="1.2" marker-end="url(#arrow-solid)"/>
+  <line x1="470" y1="310" x2="470" y2="360" stroke="#2d2d2d" stroke-width="1.2" marker-end="url(#arrow-solid)"/>
+  <line x1="650" y1="310" x2="530" y2="360" stroke="#2d2d2d" stroke-width="1.2" marker-end="url(#arrow-solid)"/>
+  <line x1="830" y1="310" x2="570" y2="360" stroke="#2d2d2d" stroke-width="1.2" marker-end="url(#arrow-solid)"/>
+
+  <!-- ============================================================ -->
+  <!-- VERIFIER — cross-cutting compilation check -->
+  <!-- ============================================================ -->
+  <rect x="350" y="362" width="240" height="50" rx="10" fill="#2a9d8f" filter="url(#shadow)"/>
+  <text x="470" y="384" text-anchor="middle" font-size="13" font-weight="bold" fill="#2d2d2d">Verifier</text>
+  <text x="470" y="400" text-anchor="middle" font-size="9" fill="#2d2d2d">3-pass XeLaTeX + BibTeX • All refs resolve</text>
+
+  <!-- ============================================================ -->
+  <!-- CRITIC-FIXER SUB-LOOP -->
+  <!-- ============================================================ -->
+  <rect x="50" y="340" width="180" height="70" rx="10" fill="none" stroke="#2a9d8f" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="140" y="364" text-anchor="middle" font-size="11" font-weight="bold" fill="#2a9d8f">Critic → Fixer</text>
+  <text x="140" y="380" text-anchor="middle" font-size="9" fill="#2a9d8f">Sub-Loop (max 5)</text>
+  <text x="140" y="396" text-anchor="middle" font-size="8" fill="#888">Applies to any reviewer output</text>
+  <!-- Loop arrow -->
+  <path d="M 80 340 C 50 330, 40 360, 50 380 C 55 388, 70 392, 80 390" stroke="#2a9d8f" stroke-width="1.5" fill="none" marker-end="url(#arrow-teal)"/>
+
+  <!-- ============================================================ -->
+  <!-- Score gates -->
+  <!-- ============================================================ -->
+  <rect x="290" y="432" width="360" height="36" rx="6" fill="#1a3a36"/>
+  <text x="470" y="455" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">Score ≥ threshold?  |  80 commit  •  90 submit  •  95 excellence</text>
+
+  <!-- ============================================================ -->
+  <!-- TALK QUALITY PATH (advisory) — separate source -->
+  <!-- ============================================================ -->
+  <line x1="470" y1="468" x2="470" y2="490" stroke="#ccc" stroke-width="1"/>
+  <text x="470" y="510" text-anchor="middle" font-size="12" font-weight="bold" fill="#888">TALK QUALITY PATH (Advisory, Non-Blocking)</text>
+
+  <!-- Talks/*.tex source -->
+  <rect x="370" y="524" width="200" height="40" rx="8" fill="#fff" stroke="#999" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="470" y="549" text-anchor="middle" font-size="11" fill="#666" font-weight="600">Talks/*.tex</text>
+
+  <!-- Arrows from Talks to talk agents -->
+  <line x1="400" y1="564" x2="310" y2="590" stroke="#999" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#arrow-dashed)"/>
+  <line x1="540" y1="564" x2="630" y2="590" stroke="#999" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#arrow-dashed)"/>
+
+  <!-- Slide Auditor -->
+  <rect x="195" y="594" width="230" height="50" rx="10" fill="#fff" stroke="#999" stroke-width="1.5" stroke-dasharray="6,3" filter="url(#shadow)"/>
+  <text x="310" y="616" text-anchor="middle" font-size="12" font-weight="bold" fill="#2d2d2d">Slide Auditor</text>
+  <text x="310" y="632" text-anchor="middle" font-size="9" fill="#666">Visual Layout • Overflow • Timing</text>
+
+  <!-- TikZ Reviewer -->
+  <rect x="515" y="594" width="230" height="50" rx="10" fill="#fff" stroke="#999" stroke-width="1.5" stroke-dasharray="6,3" filter="url(#shadow)"/>
+  <text x="630" y="616" text-anchor="middle" font-size="12" font-weight="bold" fill="#2d2d2d">TikZ Reviewer</text>
+  <text x="630" y="632" text-anchor="middle" font-size="9" fill="#666">Diagram Quality • Label Positioning</text>
+
+  <!-- ============================================================ -->
+  <!-- LEGEND -->
+  <!-- ============================================================ -->
+  <g transform="translate(470,665)">
+    <line x1="-350" y1="0" x2="-300" y2="0" stroke="#2d2d2d" stroke-width="2" marker-end="url(#arrow-solid)"/>
+    <text x="-290" y="4" font-size="10" fill="#2d2d2d">Blocking (scores gate commits)</text>
+
+    <line x1="-100" y1="0" x2="-50" y2="0" stroke="#999" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrow-dashed)"/>
+    <text x="-40" y="4" font-size="10" fill="#999">Advisory (non-blocking)</text>
+
+    <rect x="150" y="-8" width="14" height="14" rx="3" fill="#2a9d8f"/>
+    <text x="172" y="4" font-size="10" fill="#2d2d2d">Verifier / Critic-Fixer</text>
+  </g>
+</svg>
