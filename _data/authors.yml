@@ -20,3 +20,6 @@ Hugo Sant'Anna:
     - label: "Twitter"
       icon: "fab fa-twitter"
       url: "http://www.twitter.com/hsantanna"
+    - label: "UGA Econometrics Reading Group"
+      icon: "fa fa-bookmark"
+      url: "https://uga-metrics.github.io/"
