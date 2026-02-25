@@ -394,8 +394,10 @@ blockquote {
 
 // --- Academic links (papers, packages) — subtle blue ---
 .page__content a[href*="doi.org"],
+.page__content a[href*="sciencedirect.com"],
 .page__content a[href*="cran.r-project.org"],
-.page__content a[href*="rdpackages.github.io"] {
+.page__content a[href*="rdpackages.github.io"],
+.pub-links a {
   color: #3478c6;
   border-bottom: 1px dotted #3478c6;
 

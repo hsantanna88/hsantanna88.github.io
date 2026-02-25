@@ -20,7 +20,7 @@ Currently, I am interested in difference-in-difference settings where time-varyi
 *Economics Letters*, 2025 &nbsp; [[paper](https://www.sciencedirect.com/science/article/abs/pii/S0165176525005968)]
 
 "The Effects of the Venezuelan Refugee Crisis on the Brazilian Labor Market" (with [Samyam Shrestha](https://shsamyam.org)) <br />
-*Journal of Economic Geography*, 2025 &nbsp; [[paper](https://doi.org/10.1093/jeg/lbaf047)]
+*Journal of Economic Geography*, 2026 &nbsp; [[paper](https://doi.org/10.1093/jeg/lbaf047)]
 
 [All research →](/research/){: .btn .btn--primary .btn--small}
 
