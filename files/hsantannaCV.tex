@@ -1,0 +1,210 @@
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+
+% Link colors
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+% Section formatting
+\titleformat{\section}{\bfseries\large}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{12pt}{6pt}
+
+% No page numbering on first page, then header
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\rhead{\thepage}
+\lhead{Hugo Sant'Anna}
+\fancypagestyle{firstpage}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% Tight lists
+\setlist{nosep, leftmargin=2em}
+
+\begin{document}
+\thispagestyle{firstpage}
+
+% ============================================================
+% HEADER
+% ============================================================
+\begin{center}
+    {\LARGE \textbf{Hugo Sant'Anna}} \\[6pt]
+    Email: \href{mailto:hsantanna@uab.edu}{hsantanna@uab.edu} \\
+    Webpage: \href{https://hsantanna.org}{hsantanna.org} \\
+    Github: \href{https://github.com/hsantanna88}{github.com/hsantanna88}
+\end{center}
+
+\vspace{8pt}
+
+% ============================================================
+% EMPLOYMENT
+% ============================================================
+\section*{EMPLOYMENT}
+\begin{tabularx}{\textwidth}{Xr}
+    Assistant Professor of Economics, University of Alabama at Birmingham & 2025--present \\
+\end{tabularx}
+
+% ============================================================
+% EDUCATION
+% ============================================================
+\section*{EDUCATION}
+\begin{tabularx}{\textwidth}{Xr}
+    Ph.D., Economics, University of Georgia & May 2025 \\
+    M.Sc., Economics, Baylor University & May 2020 \\
+    B.A., Industrial Engineering, IBMEC-RJ & Dec 2017 \\
+\end{tabularx}
+
+% ============================================================
+% RESEARCH INTERESTS
+% ============================================================
+\section*{RESEARCH INTERESTS}
+\hspace{2em} Labor Economics, Applied Econometrics, Applied Microeconomics
+
+% ============================================================
+% PUBLICATIONS
+% ============================================================
+\section*{PUBLICATIONS}
+\begin{enumerate}
+    \item ``The End of Free Movement and International Migration'' \href{https://www.sciencedirect.com/science/article/abs/pii/S0165176525005968}{[link]} \\
+    with Samyam Shrestha \\
+    \textit{Economics Letters}, 2025
+
+    \item ``The Effects of the Venezuelan Refugee Crisis on the Brazilian Labor Market'' \href{https://doi.org/10.1093/jeg/lbaf047}{[link]} \\
+    with Samyam Shrestha \\
+    \textit{Journal of Economic Geography}, 2025
+\end{enumerate}
+
+% ============================================================
+% WORKING PAPERS
+% ============================================================
+\section*{WORKING PAPERS}
+\begin{enumerate}
+    \item ``Gender Differences in Comparative Advantage Matches: Evidence from Linked Employer-Employee Data'' \\
+    % formerly "Assortative Matching and the Gender Wage Gap"
+
+    \item ``Difference in Differences with Bad Covariates'' \href{https://arxiv.org/abs/2306.01868}{[link]} \\
+    with Brantly Callaway, Carolina Caetano, and Stroud Payne
+
+    \item ``Labor Market Effects of an Environmental Disaster: Evidence from the 2015 Mariana Dam Failure'' \href{https://arxiv.org/abs/2302.04201}{[link]}
+\end{enumerate}
+
+% ============================================================
+% WORK IN PROGRESS
+% ============================================================
+\section*{WORK IN PROGRESS}
+\begin{enumerate}
+    \item ``Immigration Enforcement, Entrepreneurship, and Firm Dynamics'' \\
+    with Samyam Shrestha
+
+    \item ``Medical Eligibility Expansion and Migration During the 1980s'' \\
+    with Samyam Shrestha
+
+    \item ``Police Enforcement and Crime Displacement'' \href{https://github.com/hsantanna88}{[link]} \\
+    \textit{master thesis}
+\end{enumerate}
+
+% ============================================================
+% TEACHING AND RESEARCH EXPERIENCE
+% ============================================================
+\section*{TEACHING AND RESEARCH EXPERIENCE}
+
+\begin{tabularx}{\textwidth}{@{}Xr@{}}
+    \textbf{Instructor of Record, University of Alabama at Birmingham} & \\
+    \hspace{2em} Principles of Microeconomics & S 2026 \\[4pt]
+    \textbf{Instructor of Record, University of Georgia} & \\
+    \hspace{2em} Principles of Macroeconomics & S 2024, Sum 2023 \\[4pt]
+    \textbf{Research Assistant, University of Georgia} & \\
+    \hspace{2em} Dr.\ Ian Schmutte & 2021, 2022, 2023, 2024 \\
+    \hspace{2em} Dr.\ Brantly Callaway & 2022, 2023, 2024 \\[4pt]
+    \textbf{Teaching Assistant, University of Georgia} & \\
+    \hspace{2em} Econometrics (Graduate) & F 2024, F 2023, S 2023, S 2022 \\
+    \hspace{2em} Labor Economics (Graduate) & F 2024, F 2023, F 2022 \\
+    \hspace{2em} Introduction to Data Science for Business & Sum 2022, F 2021 \\
+    \hspace{2em} Econometrics (Undergraduate) & S 2021 \\[4pt]
+    \textbf{Teaching \& Research Assistant, Baylor University} & \\
+    \hspace{2em} Causal Inference (Dr.\ Scott Cunningham) & S 2020 \\
+    \hspace{2em} Behavioral Economics (Dr.\ Jaison Aimone) & F 2019, S 2020 \\
+    \hspace{2em} Microeconomics (Dr.\ Scott Cunningham) & S 2019, F 2018 \\
+\end{tabularx}
+
+% ============================================================
+% AWARDS AND FELLOWSHIPS
+% ============================================================
+\section*{AWARDS AND FELLOWSHIPS}
+\begin{tabularx}{\textwidth}{Xr}
+    Outstanding Teaching Assistant Award, Center for Teaching and Learning, UGA & 2024 \\
+    Swift Undergraduate Teaching Fellowship Award, Terry College of Business, UGA & 2024 \\
+    UGA Representative at the Southern Economics Association's Graduate Session & 2024 \\
+    Travel Grant Award, Portuguese - Latin American Studies Institute, UGA & 2024 \\
+    Graduate School Travel Grant, University of Georgia & 2023 \\
+\end{tabularx}
+
+% ============================================================
+% SEMINARS AND CONFERENCES
+% ============================================================
+\section*{SEMINARS AND CONFERENCES PRESENTATIONS}
+\begin{tabularx}{\textwidth}{Xr}
+    American Economic Association Meetings & 2025 \\
+    North American Econometric Society Summer Meeting & 2024 \\
+    Western Economics Association International Conference & 2024 \\
+    Midwest Economics Association Conference & 2024 \\
+    Southern Economic Association Conference & 2024, 2023, 2022 \\
+    Econometrics Reading Group, University of Georgia & S 2024, F 2023 \\
+\end{tabularx}
+
+% ============================================================
+% REFEREE
+% ============================================================
+\section*{REFEREE FOR JOURNALS}
+\hspace{2em} American Journal of Agricultural Economics \\
+\hspace{2em} Agricultural and Applied Economics Association Conference
+
+% ============================================================
+% EXTENSION ACTIVITIES
+% ============================================================
+\section*{EXTENSION ACTIVITIES}
+\begin{tabularx}{\textwidth}{Xr}
+    Econometrics Reading Group Organizer, University of Georgia \href{https://uga-metrics.github.io/}{[link]} & F 2024, S 2024 \\
+    Machine Learning Consultant, Food Science and Technology Dept., UGA \href{https://github.com/hsantanna88}{[link]} & F 2023 \\
+    Scott Cunningham's \textit{Causal Inference the Mixtape} R Coding \href{https://github.com/hsantanna88}{[link]} & 2020, 2019 \\
+\end{tabularx}
+
+% ============================================================
+% SKILLS
+% ============================================================
+\section*{SKILLS}
+\hspace{2em} \textit{Programming:} R, Python, Matlab, Stata, \LaTeX \\
+\hspace{2em} \textit{Language:} Portuguese, English
+
+% ============================================================
+% REFERENCES
+% ============================================================
+\section*{REFERENCES}
+
+\begin{tabularx}{\textwidth}{XXX}
+    \textbf{Dr.\ Ian Schmutte} & \textbf{Dr.\ Brantly Callaway} & \textbf{Dr.\ Gregorio Caetano} \\
+    Chair & Associate Professor & Associate Professor \\
+    Associate Professor & Department of Economics & Department of Economics \\
+    Department of Economics & University of Georgia & University of Georgia \\
+    University of Georgia & brantly.callaway@uga.edu & gregorio.caetano@uga.edu \\
+    schmutte@uga.edu & & \\
+\end{tabularx}
+
+\vfill
+\hfill \textit{Updated on February 25, 2026.}
+
+\end{document}

@@ -6,23 +6,22 @@ permalink: /research/
 ---
 ## Publications
 
+"The End of Free Movement and International Migration" (with [Samyam Shrestha](https://shsamyam.org)) <br />
+<span style="color:#1E4B6B;">*Economics Letters*, 2025</span> [[paper](https://www.sciencedirect.com/science/article/abs/pii/S0165176525005968)]
+
 "The Effects of the Venezuelan Refugee Crisis on the Brazilian Labor Market" (with [Samyam Shrestha](https://shsamyam.org)) <br />
-<span style="color:#1E4B6B;">Upcoming, *Journal of Economic Geography*</span> [[details](/workingpapers/vzcrisis.md)]
+<span style="color:#1E4B6B;">*Journal of Economic Geography*, 2025</span> [[paper](https://doi.org/10.1093/jeg/lbaf047)] [[details](/workingpapers/vzcrisis)]
 
 ## Working Papers
 
-"The End of Free Movement and International Migration"  (with [Samyam Shrestha](https://shsamyam.org)) <br /> 
-<span style="color:#1e6b52;">Revise and Resubmit, *Economic Letters*</span>
-
 "Gender Differences in Comparative Advantage Matches: Evidence from Linked Employer-Employee Data" <br />
-<span style="color:#1e6b52;">*Job Market Paper*</span> [[details](/workingpapers/assortmatch.md)]
-
+<span style="color:#d9822b;">*Working Paper*</span> [[details](/workingpapers/assortmatch)]
 
 "Difference in Differences with Bad Controls" (with [Carolina Caetano](http://www.carolinacaetano.net), [Brantly Callaway](https://bcallaway11.github.io), and [Stroud Payne](https://as.vanderbilt.edu/economics/bio/stroud-payne/))<br />
-<span style="color:#d9822b;">*Working Paper*</span> [[details](/workingpapers/badcontrols.md)]
+<span style="color:#d9822b;">*Working Paper*</span> [[details](/workingpapers/badcontrols)]
 
 "Labor Market Effects of an Environmental Disaster: Evidence from the 2015 Mariana Dam Failure"  <br />
-<span style="color:#d9822b;">*Working Paper*</span> [[details](/workingpapers/mariana.md)]
+<span style="color:#d9822b;">*Working Paper*</span> [[details](/workingpapers/mariana)]
 
 
 
