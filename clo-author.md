@@ -10,7 +10,7 @@ use_math: true
 
 <div style="text-align: center; margin: 0.5em 0 1em;">
   <img src="/assets/images/clo-author-demo.gif" alt="Clo-Author in action" style="max-width: 100%; border-radius: 8px; border: 2px solid #2a9d8f; box-shadow: 0 2px 8px rgba(0,0,0,0.12);">
-  <p style="font-size: 0.7em; color: #aaa; margin-top: 0.3em; font-style: italic;">Clodovil, legendary presenter</p>
+  <p style="font-size: 0.7em; color: #aaa; margin-top: 0.3em; font-style: italic;">The legendary Clodovil</p>
 </div>
 
 An open-source [Claude Code](https://docs.anthropic.com/en/docs/claude-code) workflow that turns your terminal into a full-service applied econometrics research assistant — from literature review to journal submission.
