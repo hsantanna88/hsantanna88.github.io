@@ -1,5 +1,6 @@
 # Site settings
-theme: minimal-mistakes-jekyll
+remote_theme: mmistakes/minimal-mistakes
+# theme: minimal-mistakes-jekyll  # use this for local development
 minimal_mistakes_skin: "air"
 title: Hugo Sant'Anna
 author: Hugo Sant'Anna
@@ -40,6 +41,7 @@ plugins:
   - jekyll-feed
   - jemoji
   - jekyll-include-cache
+  - jekyll-remote-theme
 
 # Exclude from processing
 exclude:
