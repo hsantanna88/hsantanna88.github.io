@@ -488,6 +488,8 @@ This project is a fork of [Pedro Sant'Anna's claude-code-my-workflow](https://gi
 
 The core infrastructure (contractor mode, quality gates, context survival, session logging) comes from the original template. The econometrics-specific agents, paper drafting skills, and submission workflow are new.
 
+The `/humanizer` skill is by [Siqi Chen](https://github.com/blader/humanizer), adapted here for academic writing in economics.
+
 ---
 
 ## License
