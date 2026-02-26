@@ -133,6 +133,11 @@ a {
   }
 }
 
+// --- Sidebar: kill the default 0.75 opacity ---
+.sidebar {
+  opacity: 1 !important;
+}
+
 // --- Sidebar author profile ---
 .author__avatar {
   display: block;
