@@ -144,13 +144,17 @@ a {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
   }
 
-  img {
+  img,
+  img:hover {
     max-width: 200px;
     border-radius: 10px;
     border: 3px solid #2a9d8f;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    -webkit-filter: none !important;
     filter: none !important;
     opacity: 1 !important;
+    -webkit-transform: none !important;
+    transform: none !important;
     transition: box-shadow 0.2s ease;
   }
 }
