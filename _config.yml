@@ -1,6 +1,6 @@
 # Site settings
-remote_theme: mmistakes/minimal-mistakes
-# theme: minimal-mistakes-jekyll  # use this for local development
+# remote_theme: mmistakes/minimal-mistakes
+theme: minimal-mistakes-jekyll  # use this for local development
 minimal_mistakes_skin: "air"
 title: Hugo Sant'Anna
 author: Hugo Sant'Anna
@@ -8,9 +8,9 @@ email: hsantanna@uab.edu
 description: >-
   Assistant Professor of Economics at the University of Alabama at Birmingham
 baseurl: ""
-url: "https://hsantanna88.github.io"
+url: "https://hugosantanna.github.io"
 twitter_username: hsantanna
-github_username: hsantanna88
+github_username: hugosantanna
 markdown: kramdown
 google_analytics: G-20PK9V3SD0
 

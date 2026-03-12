@@ -29,7 +29,7 @@ badcontrols:
   - title: "Resources"
     children:
       - title: "R Package"
-        url: https://github.com/hsantanna88/bad-controls
+        url: https://github.com/hugosantanna/bad-controls
       - title: "Paper (arXiv)"
         url: https://arxiv.org/abs/2405.10557
 

@@ -13,4 +13,4 @@ redirect_to: https://hsantanna.org/bad-controls/
 This page has moved to the **[full interactive guide](https://hsantanna.org/bad-controls/)**.
 
 [Go to the Guide](https://hsantanna.org/bad-controls/){: .btn .btn--primary .btn--large}
-[R Package on GitHub](https://github.com/hsantanna88/bad-controls){: .btn .btn--info .btn--large}
+[R Package on GitHub](https://github.com/hugosantanna/bad-controls){: .btn .btn--info .btn--large}

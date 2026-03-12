@@ -38,7 +38,7 @@ An open-source workflow that turns [Claude Code](https://docs.anthropic.com/en/d
 12 specialized agents. 26 slash commands. DiD, IV, RDD, Synthetic Control, Event Studies — all validated. AEA Data Editor compliance built in.
 
 [Learn more](/clo-author/){: .btn .btn--primary}
-[Fork on GitHub](https://github.com/hsantanna88/clo-author){: .btn .btn--inverse}
+[Fork on GitHub](https://github.com/hugosantanna/clo-author){: .btn .btn--inverse}
 
 </div>
 

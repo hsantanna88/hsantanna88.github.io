@@ -8,7 +8,7 @@ categories: R
 excerpt: "A brief introduction to bunching analysis as a causal method, based on <a href='https://onlinelibrary.wiley.com/doi/abs/10.3982/ECTA11231'>Caetano (2015)</a>."
 ---
 
-Here I will explain the basic concepts of bunching as a causal inference method. The full replication code is at the bottom of this post and also available on [GitHub](https://github.com/hsantanna88/bunching_example).
+Here I will explain the basic concepts of bunching as a causal inference method. The full replication code is at the bottom of this post and also available on [GitHub](https://github.com/hugosantanna/bunching_example).
 
 ```r
 library(tidyverse)

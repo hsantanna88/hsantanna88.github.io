@@ -14,7 +14,7 @@ An open-source [Claude Code](https://docs.anthropic.com/en/docs/claude-code) wor
 
 > **A note on responsibility.** AI is a powerful research accelerator, but it is not a substitute for scholarly judgment. You remain the principal investigator — the one who owns every identification assumption, every coefficient interpretation, and every claim in the manuscript. The Clo-Author is designed to make you a better supervisor of your own work: it checks your code, stress-tests your design, and catches errors before referees do. But no automated review can replace your understanding of the institutional context behind your data or the economic intuition that motivates your model. Use these tools honestly — disclose AI assistance where journals require it, verify every output, and never let convenience erode rigor. The goal is not to produce papers faster; it is to produce *better* papers, with fewer errors and stronger identification, while you focus on the ideas that only a human researcher can provide.
 
-[Fork it on GitHub](https://github.com/hsantanna88/clo-author){: .btn .btn--primary .btn--large}
+[Fork it on GitHub](https://github.com/hugosantanna/clo-author){: .btn .btn--primary .btn--large}
 
 ---
 
@@ -31,7 +31,7 @@ An open-source [Claude Code](https://docs.anthropic.com/en/docs/claude-code) wor
 
 ```bash
 # 1. Fork and clone
-gh repo fork hsantanna88/clo-author --clone
+gh repo fork hugosantanna/clo-author --clone
 cd clo-author
 
 # 2. Open Claude Code
@@ -489,6 +489,6 @@ The `/humanizer` skill is by [Siqi Chen](https://github.com/blader/humanizer), a
 
 ## License
 
-Open source under the [MIT License](https://github.com/hsantanna88/clo-author/blob/main/LICENSE). Fork it, customize it, make it yours.
+Open source under the [MIT License](https://github.com/hugosantanna/clo-author/blob/main/LICENSE). Fork it, customize it, make it yours.
 
-[Fork on GitHub](https://github.com/hsantanna88/clo-author){: .btn .btn--primary}
+[Fork on GitHub](https://github.com/hugosantanna/clo-author){: .btn .btn--primary}
